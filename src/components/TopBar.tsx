@@ -1,0 +1,29 @@
+import { DoneAll } from "@mui/icons-material";
+import { AppBar, styled, Toolbar, Typography } from "@mui/material";
+
+const Offset = styled("div")(({ theme }) => theme.mixins.toolbar);
+
+export default function TopBar() {
+    return (
+        <>
+            <AppBar elevation={3}>
+                <Toolbar>
+                    <DoneAll fontSize="large" sx={{ mr: 1 }} />
+                    <Typography 
+                        variant="h6" 
+                        noWrap sx={{
+                        flexGrow: 1,
+                        fontFamily: 'monospace',
+                        fontWeight: 700,
+                        letterSpacing: '.2rem'
+                        }}
+                    >
+                        MATERIAL TODO
+                    </Typography>
+                </Toolbar>
+            </AppBar>
+            <Offset />
+        </>
+
+    )
+}
