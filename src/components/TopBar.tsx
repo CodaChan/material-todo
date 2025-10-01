@@ -8,7 +8,7 @@ export default function TopBar() {
         <>
             <AppBar elevation={3}>
                 <Toolbar>
-                    <DoneAll fontSize="large" sx={{ mr: 1 }} />
+                    <DoneAll fontSize="large" sx={{ mr: 2 }} />
                     <Typography
                         noWrap
                         variant="h6"
@@ -16,10 +16,10 @@ export default function TopBar() {
                             flexGrow: 1,
                             fontFamily: 'monospace',
                             fontWeight: 700,
-                            letterSpacing: '.2rem'
+                            letterSpacing: '.1rem'
                         }}
                     >
-                        MATERIAL TODO
+                        Material Todo
                     </Typography>
                 </Toolbar>
             </AppBar>

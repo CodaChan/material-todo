@@ -18,7 +18,7 @@ const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => ({
     },
 }));
 
-export default function ThemeSwitch() {
+export default function ThemeSwitcher() {
     const { mode, setMode } = useColorScheme();
     const prevMode = useRef<'light' | 'dark' | 'system'>('light')
     if (!mode) {

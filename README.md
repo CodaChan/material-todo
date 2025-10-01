@@ -1,4 +1,4 @@
-# Material Todo 
+# <img src="./public/favicon.svg" alt="favicon" width="32" height="32" /> Material Todo 
 
 A simple todolist application.
 
@@ -9,18 +9,27 @@ A simple todolist application.
 ```
 npm install
 ```
+
 ```
 npm run dev
 ```
 
 ## Version History
+
 Infdev-250928
-- chore: initial repo
+- initial repo
+
+Infdev-251001
+- submit check
+- code format
+- local storage
 
 ## TODO
-- hover label
+
+- ~~submit check~~
+- ~~code format~~
+- ~~local storage~~
 - filter
 - dragger @dnd-kit
-- storage
-- codestyle
-
+- catch error
+- hover label

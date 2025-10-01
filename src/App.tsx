@@ -1,9 +1,10 @@
 import { Box } from "@mui/material";
 import { useEffect, useState } from "react";
 import CreateTodo from "./components/CreateTodo";
-import ThemeSwitch from "./components/ThemeSwitch";
+import ThemeSwitcher from "./components/ThemeSwitcher";
 import TodoList from "./components/TodoList";
 import TopBar from "./components/TopBar";
+import FaviconSwitcher from "./components/FaviconSwitcher";
 import type Todo from "./types";
 
 export default function App() {
@@ -38,13 +39,14 @@ export default function App() {
     }
 
     return (
-        <Box>
+        <>
+            <FaviconSwitcher />
             <TopBar />
             <Box sx={{ marginX: 'auto', maxWidth: { xs: '80%', sm: '60%' } }}>
                 <CreateTodo onCreateTodo={handleCreateTodo} />
                 <TodoList onRemoveTodo={handleRemoveTodo} onToggleTodo={handleToggleTodo} todos={todos} />
-                <ThemeSwitch />
+                <ThemeSwitcher />
             </Box>
-        </Box>
+        </>
     )
 }
