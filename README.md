@@ -14,15 +14,12 @@ npm install
 npm run dev
 ```
 
-## Version History
+## Features
 
-Infdev-250928
-- initial repo
-
-Infdev-251001
-- submit check
-- code format
-- local storage
+- Material Design 2
+- Responsive pages
+- Full support for dark mode
+- Local data cache
 
 ## TODO
 
@@ -33,3 +30,5 @@ Infdev-251001
 - dragger @dnd-kit
 - catch error
 - hover label
+- add comments
+- add github link

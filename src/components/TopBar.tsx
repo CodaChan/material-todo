@@ -1,5 +1,5 @@
-import { DoneAll } from "@mui/icons-material";
-import { AppBar, styled, Toolbar, Typography } from "@mui/material";
+import { DoneAll, GitHub } from "@mui/icons-material";
+import { AppBar, IconButton, styled, Toolbar, Typography } from "@mui/material";
 
 const Offset = styled("div")(({ theme }) => theme.mixins.toolbar);
 
@@ -8,7 +8,13 @@ export default function TopBar() {
         <>
             <AppBar elevation={3}>
                 <Toolbar>
-                    <DoneAll fontSize="large" sx={{ mr: 2 }} />
+                    <IconButton
+                        component="a"
+                        href="/"
+                        sx={{ mr: 1 }}
+                    >
+                        <DoneAll fontSize="large" />
+                    </IconButton>
                     <Typography
                         noWrap
                         variant="h6"
@@ -21,6 +27,12 @@ export default function TopBar() {
                     >
                         Material Todo
                     </Typography>
+                    <IconButton
+                        component="a"
+                        href="https://github.com/CodaChan/material-todo"
+                    >
+                        <GitHub fontSize="large" />
+                    </IconButton>
                 </Toolbar>
             </AppBar>
             <Offset />
