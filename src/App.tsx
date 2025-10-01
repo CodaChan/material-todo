@@ -11,7 +11,7 @@ export default function App() {
   
   const onCreateTodo = (text: string) => {
     if(text != '') {
-      setTodos([...todos, {id: Date.now(), content: text, compeleted: false}])
+      setTodos([...todos, {id: Date.now(), content: text, completed: false}])
     }
   }
 
@@ -22,7 +22,7 @@ export default function App() {
   const onToggleTodo = (id: number) => {
     setTodos(todos.map(todo=>{
       if(todo.id===id) {
-        todo.compeleted = !todo.compeleted
+        todo.completed = !todo.completed
       }
       return todo
     }))

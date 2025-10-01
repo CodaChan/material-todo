@@ -20,11 +20,11 @@ export default function TodoList({ onRemoveTodo, onToggleTodo, todos }: TodoList
                     </IconButton>
                 }>
                     <ListItemButton onClick={() => onToggleTodo(todo.id)}>
-                        <Checkbox checked={todo.compeleted} edge='start' disableRipple></Checkbox>
+                        <Checkbox checked={todo.completed} edge='start' disableRipple></Checkbox>
                         <ListItemText
                             sx={{
-                                textDecoration: todo.compeleted ? 'line-through' : 'none',
-                                color: todo.compeleted ? 'gray' : 'inherit'
+                                textDecoration: todo.completed ? 'line-through' : 'none',
+                                color: todo.completed ? 'gray' : 'inherit'
                             }}
                         >
                             {todo.content}
