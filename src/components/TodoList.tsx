@@ -1,6 +1,6 @@
+import { Delete } from "@mui/icons-material"
 import { Checkbox, IconButton, List, ListItem, ListItemButton, ListItemText } from "@mui/material"
 import type Todo from "../types"
-import { Delete } from "@mui/icons-material"
 
 interface TodoListProps {
     onRemoveTodo: (id: number) => void,
@@ -11,20 +11,30 @@ interface TodoListProps {
 export default function TodoList({ onRemoveTodo, onToggleTodo, todos }: TodoListProps) {
     return (
         <List>
-            {todos.map(todo => (
-                <ListItem key={todo.id} disablePadding secondaryAction={
-                    <IconButton edge='end' sx={{'&:hover':{color: 'red'}}} onClick={() =>
-                        onRemoveTodo(todo.id)
-                    }>
-                        <Delete />
-                    </IconButton>
-                }>
+            {todos.map((todo) => (
+                <ListItem
+                    key={todo.id}
+                    disablePadding
+                    secondaryAction={
+                        <IconButton
+                            edge="end"
+                            onClick={() => onRemoveTodo(todo.id)}
+                            sx={{ '&:hover': { color: 'red' } }}
+                        >
+                            <Delete />
+                        </IconButton>
+                    }
+                >
                     <ListItemButton onClick={() => onToggleTodo(todo.id)}>
-                        <Checkbox checked={todo.completed} edge='start' disableRipple></Checkbox>
+                        <Checkbox
+                            checked={todo.completed}
+                            disableRipple
+                            edge="start"
+                        />
                         <ListItemText
                             sx={{
-                                textDecoration: todo.completed ? 'line-through' : 'none',
-                                color: todo.completed ? 'gray' : 'inherit'
+                                color: todo.completed ? 'gray' : 'inherit',
+                                textDecoration: todo.completed ? 'line-through' : 'none'
                             }}
                         >
                             {todo.content}

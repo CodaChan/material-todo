@@ -9,13 +9,14 @@ export default function TopBar() {
             <AppBar elevation={3}>
                 <Toolbar>
                     <DoneAll fontSize="large" sx={{ mr: 1 }} />
-                    <Typography 
-                        variant="h6" 
-                        noWrap sx={{
-                        flexGrow: 1,
-                        fontFamily: 'monospace',
-                        fontWeight: 700,
-                        letterSpacing: '.2rem'
+                    <Typography
+                        noWrap
+                        variant="h6"
+                        sx={{
+                            flexGrow: 1,
+                            fontFamily: 'monospace',
+                            fontWeight: 700,
+                            letterSpacing: '.2rem'
                         }}
                     >
                         MATERIAL TODO
@@ -24,6 +25,5 @@ export default function TopBar() {
             </AppBar>
             <Offset />
         </>
-
     )
 }

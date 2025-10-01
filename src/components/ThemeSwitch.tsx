@@ -1,5 +1,5 @@
 import { AutoMode, DarkMode, LightMode } from "@mui/icons-material";
-import { useColorScheme, ToggleButtonGroup, ToggleButton, styled, toggleButtonGroupClasses, Divider, Paper } from "@mui/material";
+import { Divider, Paper, ToggleButton, ToggleButtonGroup, useColorScheme, styled, toggleButtonGroupClasses } from "@mui/material";
 import { useRef } from "react";
 
 const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => ({
@@ -28,8 +28,8 @@ export default function ThemeSwitch() {
         <Paper
             elevation={3}
             sx={(theme) => ({
-                display: 'flex',
                 border: `1px solid ${theme.palette.divider}`,
+                display: 'flex',
                 flexWrap: 'wrap',
                 position: 'fixed',
                 bottom: 24,
@@ -40,19 +40,20 @@ export default function ThemeSwitch() {
         >
             <StyledToggleButtonGroup
                 exclusive
-                value={mode}
                 onChange={(_event, value) => {
-                    if(value!=null)
+                    if (value !== null) {
                         setMode(value as 'light' | 'dark')
+                    }
                 }}
+                value={mode}
                 sx={{
                     display: mode === 'system' ? 'none' : 'flex'
                 }}
             >
-                <ToggleButton value="light" disabled={mode === 'system'}>
+                <ToggleButton disabled={mode === 'system'} value="light">
                     <LightMode />
                 </ToggleButton>
-                <ToggleButton value="dark" disabled={mode === 'system'}>
+                <ToggleButton disabled={mode === 'system'} value="dark">
                     <DarkMode />
                 </ToggleButton>
             </StyledToggleButtonGroup>
@@ -79,8 +80,6 @@ export default function ThemeSwitch() {
             />
             <StyledToggleButtonGroup>
                 <ToggleButton
-                    value="system"
-                    selected={mode === 'system'}
                     onChange={() => {
                         if (mode === 'system') {
                             setMode(prevMode.current)
@@ -90,10 +89,12 @@ export default function ThemeSwitch() {
                             setMode('system')
                         }
                     }}
+                    selected={mode === 'system'}
                     sx={{
                         width: 96,
                         height: 46
                     }}
+                    value="system"
                 >
                     <AutoMode sx={{ mr: 1 }} />
                     Auto

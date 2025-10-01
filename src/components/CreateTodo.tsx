@@ -23,26 +23,38 @@ export default function CreateTodo({ onCreateTodo }: CreateTodoProps) {
     }
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setText(event.target.value)
-        if (hasError && event.target.value.trim() !== '') {
+        const value = event.target.value
+        setText(value)
+        if (hasError && value.trim()) {
             setHasError(false)
         }
     }
 
     return (
         <Box component="section">
-            <Typography variant="h3" sx={{ fontWeight: 'bold', m: 1, mt: 5 }}>TodoList</Typography>
-            <Box component="form" onSubmit={handleSubmit} sx={{ display: 'flex', alignItems: 'center', flexDirection: 'row' }}>
+            <Typography variant="h3" sx={{ fontWeight: 'bold', m: 1, mt: 5 }}>
+                TodoList
+            </Typography>
+            <Box
+                component="form"
+                onSubmit={handleSubmit}
+                sx={{ alignItems: 'center', display: 'flex', flexDirection: 'row' }}
+            >
                 <TextField
                     id="outlined-basic"
                     label="Anything"
-                    variant="outlined"
                     value={text}
                     onChange={handleChange}
                     error={hasError}
                     sx={{ flexGrow: 1, m: 1 }}
                 />
-                <Fab type="submit" color="primary" aria-label="add" size="small" sx={{ m: 1, flexShrink: 0 }}>
+                <Fab
+                    aria-label="add"
+                    color="primary"
+                    size="small"
+                    sx={{ flexShrink: 0, m: 1 }}
+                    type="submit"
+                >
                     <Add />
                 </Fab>
             </Box>
