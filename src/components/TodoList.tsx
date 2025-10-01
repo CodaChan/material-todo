@@ -17,6 +17,7 @@ export default function TodoList({ onRemoveTodo, onToggleTodo, todos }: TodoList
                     disablePadding
                     secondaryAction={
                         <IconButton
+                            aria-label="Remove Todo"
                             edge="end"
                             onClick={() => onRemoveTodo(todo.id)}
                             sx={{ '&:hover': { color: 'red' } }}
@@ -25,7 +26,10 @@ export default function TodoList({ onRemoveTodo, onToggleTodo, todos }: TodoList
                         </IconButton>
                     }
                 >
-                    <ListItemButton onClick={() => onToggleTodo(todo.id)}>
+                    <ListItemButton 
+                        onClick={() => onToggleTodo(todo.id)}
+                        aria-label="Toggle Todo"
+                    >
                         <Checkbox
                             checked={todo.completed}
                             disableRipple

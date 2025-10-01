@@ -49,7 +49,7 @@ export default function CreateTodo({ onCreateTodo }: CreateTodoProps) {
                     sx={{ flexGrow: 1, m: 1 }}
                 />
                 <Fab
-                    aria-label="add"
+                    aria-label="Create Todo"
                     color="primary"
                     size="small"
                     sx={{ zIndex: 0, flexShrink: 0, m: 1 }}

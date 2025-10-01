@@ -9,6 +9,7 @@ export default function TopBar() {
             <AppBar elevation={3}>
                 <Toolbar>
                     <IconButton
+                        aria-label="Material Todo"
                         component="a"
                         href="/"
                         sx={{ mr: 1 }}
@@ -28,8 +29,11 @@ export default function TopBar() {
                         Material Todo
                     </Typography>
                     <IconButton
+                        aria-label="GitHub"
                         component="a"
                         href="https://github.com/CodaChan/material-todo"
+                        target="_blank"
+                        rel="noopener noreferrer"
                     >
                         <GitHub fontSize="large" />
                     </IconButton>

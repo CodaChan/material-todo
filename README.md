@@ -26,9 +26,9 @@ npm run dev
 - ~~submit check~~
 - ~~code format~~
 - ~~local storage~~
+- ~~add github link~~
 - filter
 - dragger @dnd-kit
 - catch error
 - hover label
 - add comments
-- add github link
