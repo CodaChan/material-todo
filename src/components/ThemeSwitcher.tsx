@@ -1,22 +1,6 @@
 import { AutoMode, DarkMode, LightMode } from "@mui/icons-material";
-import { Divider, Paper, ToggleButton, ToggleButtonGroup, useColorScheme, styled, toggleButtonGroupClasses } from "@mui/material";
+import { Divider, ToggleButton, ToggleButtonGroup, useColorScheme, toggleButtonGroupClasses, Box } from "@mui/material";
 import { useRef } from "react";
-
-const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => ({
-    [`& .${toggleButtonGroupClasses.grouped}`]: {
-        margin: theme.spacing(0.5),
-        border: 0,
-        borderRadius: theme.shape.borderRadius,
-        [`&.${toggleButtonGroupClasses.disabled}`]: {
-            border: 0,
-        },
-    },
-    [`& .${toggleButtonGroupClasses.middleButton},& .${toggleButtonGroupClasses.lastButton}`]:
-    {
-        marginLeft: -1,
-        borderLeft: '1px solid transparent',
-    },
-}));
 
 export default function ThemeSwitcher() {
     const { mode, setMode } = useColorScheme();
@@ -25,20 +9,8 @@ export default function ThemeSwitcher() {
         return null;
     }
     return (
-        <Paper
-            elevation={3}
-            sx={(theme) => ({
-                border: `1px solid ${theme.palette.divider}`,
-                display: 'flex',
-                flexWrap: 'wrap',
-                position: 'fixed',
-                bottom: 24,
-                right: 24,
-                flexDirection: { xs: 'column', sm: 'row' },
-                alignItems: 'center'
-            })}
-        >
-            <StyledToggleButtonGroup
+        <Box sx={{ display: 'flex' }}>
+            <ToggleButtonGroup
                 exclusive
                 onChange={(_event, value) => {
                     if (value !== null) {
@@ -47,7 +19,15 @@ export default function ThemeSwitcher() {
                 }}
                 value={mode}
                 sx={{
-                    display: mode === 'system' ? 'none' : 'flex'
+                    display: mode === 'system' ? 'none' : 'flex',
+                    [`& .${toggleButtonGroupClasses.grouped}`]: {
+                        m: 0.5,
+                        border: 0,
+                        borderRadius: 1,
+                        '&:not(:first-of-type)': {
+                            marginLeft: 0
+                        }
+                    }
                 }}
             >
                 <ToggleButton disabled={mode === 'system'} value="light">
@@ -56,29 +36,16 @@ export default function ThemeSwitcher() {
                 <ToggleButton disabled={mode === 'system'} value="dark">
                     <DarkMode />
                 </ToggleButton>
-            </StyledToggleButtonGroup>
+            </ToggleButtonGroup>
             <Divider
                 flexItem
                 orientation="vertical"
                 sx={{
-                    display: {
-                        xs: 'none',
-                        sm: mode === 'system' ? 'none' : 'block'
-                    },
+                    display: mode === 'system' ? 'none' : 'block',
                     my: 1
                 }}
             />
-            <Divider
-                flexItem
-                sx={{
-                    display: {
-                        xs: mode === 'system' ? 'none' : 'block',
-                        sm: 'none'
-                    },
-                    mx: 1
-                }} 
-            />
-            <StyledToggleButtonGroup>
+            {/* <StyledToggleButtonGroup> */}
                 <ToggleButton
                     onChange={() => {
                         if (mode === 'system') {
@@ -90,16 +57,16 @@ export default function ThemeSwitcher() {
                         }
                     }}
                     selected={mode === 'system'}
-                    sx={{
-                        width: 96,
-                        height: 46
-                    }}
                     value="system"
+                    sx={{
+                        m: 0.5,
+                        border: 0,
+                        borderRadius: 1
+                    }}
                 >
-                    <AutoMode sx={{ mr: 1 }} />
-                    Auto
+                    <AutoMode />
                 </ToggleButton>
-            </StyledToggleButtonGroup>
-        </Paper>
+            {/* </StyledToggleButtonGroup> */}
+        </Box>
     );
 }

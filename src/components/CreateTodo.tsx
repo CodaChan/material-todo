@@ -32,7 +32,7 @@ export default function CreateTodo({ onCreateTodo }: CreateTodoProps) {
 
     return (
         <Box component="section">
-            <Typography variant="h3" sx={{ fontWeight: 'bold', m: 1, mt: 5 }}>
+            <Typography variant="h3" sx={{ fontFamily: 'monospace', fontWeight: 'bold', m: 1, mt: 5 }}>
                 TodoList
             </Typography>
             <Box

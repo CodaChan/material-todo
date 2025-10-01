@@ -1,7 +1,6 @@
 import { Box } from "@mui/material";
 import { useEffect, useState } from "react";
 import CreateTodo from "./components/CreateTodo";
-import ThemeSwitcher from "./components/ThemeSwitcher";
 import TodoList from "./components/TodoList";
 import TopBar from "./components/TopBar";
 import FaviconSwitcher from "./components/FaviconSwitcher";
@@ -45,7 +44,6 @@ export default function App() {
             <Box sx={{ marginX: 'auto', maxWidth: { xs: '80%', sm: '60%' } }}>
                 <CreateTodo onCreateTodo={handleCreateTodo} />
                 <TodoList onRemoveTodo={handleRemoveTodo} onToggleTodo={handleToggleTodo} todos={todos} />
-                <ThemeSwitcher />
             </Box>
         </>
     )

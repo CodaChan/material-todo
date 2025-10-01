@@ -1,5 +1,6 @@
 import { DoneAll, GitHub } from "@mui/icons-material";
 import { AppBar, IconButton, styled, Toolbar, Typography } from "@mui/material";
+import ThemeSwitcher from "./ThemeSwitcher";
 
 const Offset = styled("div")(({ theme }) => theme.mixins.toolbar);
 
@@ -14,7 +15,7 @@ export default function TopBar() {
                         href="/"
                         sx={{ mr: 1 }}
                     >
-                        <DoneAll fontSize="large" />
+                        <DoneAll fontSize="large" sx={{ color: 'white' }} />
                     </IconButton>
                     <Typography
                         noWrap
@@ -28,12 +29,14 @@ export default function TopBar() {
                     >
                         Material Todo
                     </Typography>
+                    <ThemeSwitcher />
                     <IconButton
                         aria-label="GitHub"
                         component="a"
                         href="https://github.com/CodaChan/material-todo"
                         target="_blank"
                         rel="noopener noreferrer"
+                        sx={{ ml: 1 }}
                     >
                         <GitHub fontSize="large" />
                     </IconButton>
