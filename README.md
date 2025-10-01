@@ -1,4 +1,4 @@
-# <img src="./public/favicon.svg" alt="favicon" width="32" height="32" /> Material Todo 
+# ![Logo light](./public/favicon-light.svg#gh-light-mode-only)![Logo dark](./public/favicon-dark.svg#gh-dark-mode-only) Material Todo 
 
 A simple todolist application.
 
