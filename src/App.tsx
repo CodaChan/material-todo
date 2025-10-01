@@ -10,9 +10,7 @@ export default function App() {
   const [todos, setTodos] = useState<Todo[]>([])
   
   const onCreateTodo = (text: string) => {
-    if(text != '') {
-      setTodos([...todos, {id: Date.now(), content: text, completed: false}])
-    }
+    setTodos([...todos, {id: Date.now(), content: text, completed: false}])
   }
 
   const onRemoveTodo = (id: number) => {
