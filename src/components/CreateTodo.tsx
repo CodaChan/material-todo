@@ -52,7 +52,7 @@ export default function CreateTodo({ onCreateTodo }: CreateTodoProps) {
                     aria-label="add"
                     color="primary"
                     size="small"
-                    sx={{ flexShrink: 0, m: 1 }}
+                    sx={{ zIndex: 0, flexShrink: 0, m: 1 }}
                     type="submit"
                 >
                     <Add />

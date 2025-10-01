@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CreateTodo from "./components/CreateTodo";
 import ThemeSwitch from "./components/ThemeSwitch";
 import TodoList from "./components/TodoList";
@@ -7,7 +7,17 @@ import TopBar from "./components/TopBar";
 import type Todo from "./types";
 
 export default function App() {
-    const [todos, setTodos] = useState<Todo[]>([])
+    const [todos, setTodos] = useState<Todo[]>(() => {
+        if (typeof window === "undefined") {
+            return []
+        }
+        const stored = window.localStorage.getItem("todos")
+        return stored ? JSON.parse(stored) as Todo[] : []
+    })
+
+    useEffect(() => {
+        window.localStorage.setItem("todos", JSON.stringify(todos))
+    }, [todos])
 
     const handleCreateTodo = (text: string) => {
         setTodos((previous) => [...previous, { completed: false, content: text, id: Date.now() }])
