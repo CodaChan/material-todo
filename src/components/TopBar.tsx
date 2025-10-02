@@ -1,5 +1,5 @@
 import { DoneAll, GitHub } from "@mui/icons-material";
-import { AppBar, IconButton, styled, Toolbar, Typography } from "@mui/material";
+import { AppBar, IconButton, styled, Toolbar, Tooltip, Typography } from "@mui/material";
 import ThemeSwitcher from "./ThemeSwitcher";
 
 const Offset = styled("div")(({ theme }) => theme.mixins.toolbar);
@@ -9,14 +9,16 @@ export default function TopBar() {
         <>
             <AppBar elevation={3}>
                 <Toolbar>
-                    <IconButton
-                        aria-label="Material Todo"
-                        component="a"
-                        href="/"
-                        sx={{ mr: 1 }}
-                    >
-                        <DoneAll fontSize="large" sx={{ color: 'white' }} />
-                    </IconButton>
+                    <Tooltip title="Material Todo">
+                        <IconButton
+                            aria-label="Material Todo"
+                            component="a"
+                            href="/"
+                            sx={{ mr: 1, color: 'white' }}
+                        >
+                            <DoneAll fontSize="large" />
+                        </IconButton>
+                    </Tooltip>
                     <Typography
                         noWrap
                         variant="h6"
@@ -30,16 +32,18 @@ export default function TopBar() {
                         Material Todo
                     </Typography>
                     <ThemeSwitcher />
-                    <IconButton
-                        aria-label="GitHub"
-                        component="a"
-                        href="https://github.com/CodaChan/material-todo"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        sx={{ ml: 1 }}
-                    >
-                        <GitHub fontSize="large" sx={{ color: 'white' }} />
-                    </IconButton>
+                    <Tooltip title="Github">
+                        <IconButton
+                            aria-label="GitHub"
+                            component="a"
+                            href="https://github.com/CodaChan/material-todo"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            sx={{ ml: 1, color: 'white' }}
+                        >
+                            <GitHub fontSize="large"/>
+                        </IconButton>
+                    </Tooltip>
                 </Toolbar>
             </AppBar>
             <Offset />

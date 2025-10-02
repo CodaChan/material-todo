@@ -1,5 +1,5 @@
 import { Delete } from "@mui/icons-material"
-import { Checkbox, IconButton, List, ListItem, ListItemButton, ListItemText } from "@mui/material"
+import { Checkbox, IconButton, List, ListItem, ListItemButton, ListItemText, Tooltip } from "@mui/material"
 import type Todo from "../types"
 
 interface TodoListProps {
@@ -16,17 +16,20 @@ export default function TodoList({ onRemoveTodo, onToggleTodo, todos }: TodoList
                     key={todo.id}
                     disablePadding
                     secondaryAction={
-                        <IconButton
-                            aria-label="Remove Todo"
-                            edge="end"
-                            onClick={() => onRemoveTodo(todo.id)}
-                            sx={{ '&:hover': { color: 'red' } }}
-                        >
-                            <Delete />
-                        </IconButton>
+                        <Tooltip title="Remove Todo" placement="right">
+                            <IconButton
+                                aria-label="Remove Todo"
+                                edge="end"
+                                onClick={() => onRemoveTodo(todo.id)}
+                                sx={{ '&:hover': { color: 'red' } }}
+                            >
+                                <Delete />
+                            </IconButton>
+                        </Tooltip>
+
                     }
                 >
-                    <ListItemButton 
+                    <ListItemButton
                         onClick={() => onToggleTodo(todo.id)}
                         aria-label="Toggle Todo"
                     >

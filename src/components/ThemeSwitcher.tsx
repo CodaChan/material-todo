@@ -1,5 +1,5 @@
 import { AutoMode, DarkMode, LightMode } from "@mui/icons-material";
-import { Divider, ToggleButton, ToggleButtonGroup, useColorScheme, toggleButtonGroupClasses, Box } from "@mui/material";
+import { Divider, ToggleButton, ToggleButtonGroup, useColorScheme, toggleButtonGroupClasses, Box, Tooltip } from "@mui/material";
 import { useRef } from "react";
 
 export default function ThemeSwitcher() {
@@ -34,12 +34,17 @@ export default function ThemeSwitcher() {
                     }
                 }}
             >
-                <ToggleButton disabled={mode === 'system'} value="light">
-                    <LightMode />
-                </ToggleButton>
-                <ToggleButton disabled={mode === 'system'} value="dark">
-                    <DarkMode />
-                </ToggleButton>
+                <Tooltip title="Light Mode">
+                    <ToggleButton disabled={mode === 'system'} value="light" aria-label="Light Mode" >
+                        <LightMode />
+                    </ToggleButton>
+                </Tooltip>
+                <Tooltip title="Dark Mode">
+                    <ToggleButton disabled={mode === 'system'} value="dark" aria-label="Dark Mode">
+                        <DarkMode />
+                    </ToggleButton>
+                </Tooltip>
+
             </ToggleButtonGroup>
             <Divider
                 flexItem
@@ -49,30 +54,34 @@ export default function ThemeSwitcher() {
                     my: 1
                 }}
             />
-            <ToggleButton
-                onChange={() => {
-                    if (mode === 'system') {
-                        setMode(prevMode.current)
-                        prevMode.current = 'system'
-                    } else {
-                        prevMode.current = mode
-                        setMode('system')
-                    }
-                }}
-                selected={mode === 'system'}
-                value="system"
-                sx={{
-                    m: 0.5,
-                    border: 0,
-                    borderRadius: 1,
-                    color: 'white',
-                    '&.Mui-selected, &.Mui-selected:hover': {
-                        color: 'white'
-                    }
-                }}
-            >
-                <AutoMode />
-            </ToggleButton>
+            <Tooltip title="Auto Mode">
+                <ToggleButton
+                    onChange={() => {
+                        if (mode === 'system') {
+                            setMode(prevMode.current)
+                            prevMode.current = 'system'
+                        } else {
+                            prevMode.current = mode
+                            setMode('system')
+                        }
+                    }}
+                    selected={mode === 'system'}
+                    value="system"
+                    aria-label="Auto Mode"
+                    sx={{
+                        m: 0.5,
+                        border: 0,
+                        borderRadius: 1,
+                        color: 'white',
+                        '&.Mui-selected, &.Mui-selected:hover': {
+                            color: 'white'
+                        }
+                    }}
+                >
+                    <AutoMode />
+                </ToggleButton>
+            </Tooltip>
+
         </Box>
     );
 }

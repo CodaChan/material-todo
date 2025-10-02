@@ -30,8 +30,8 @@ npm run dev
 - ~~submit check~~
 - ~~code format~~
 - ~~local storage~~
-- ~~add github link~~
+- ~~github link~~
 - ~~filter~~
-- hover label
+- ~~hover label~~
 - success hint
 - add comments

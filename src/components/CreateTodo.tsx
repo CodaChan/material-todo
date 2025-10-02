@@ -1,5 +1,5 @@
 import { Add } from "@mui/icons-material";
-import { Box, Fab, TextField, Typography } from "@mui/material";
+import { Box, Fab, TextField, Tooltip, Typography } from "@mui/material";
 import { type ChangeEvent, type FormEvent, useState } from "react";
 
 interface CreateTodoProps {
@@ -42,29 +42,32 @@ export default function CreateTodo({ onCreateTodo }: CreateTodoProps) {
             >
                 <TextField
                     id="outlined-basic"
-                    label="Anything"
+                    label="Input Todo"
                     value={text}
                     onChange={handleChange}
                     error={hasError}
                     sx={{ flexGrow: 1, m: 1 }}
                 />
-                <Fab
-                    aria-label="Create Todo"
-                    color="primary"
-                    size="small"
-                    sx={{
-                        zIndex: 0,
-                        flexShrink: 0,
-                        m: 1,
-                        boxShadow: 1,
-                        '&:active': {
-                            boxShadow: 0,
-                        }
-                    }}
-                    type="submit"
-                >
-                    <Add />
-                </Fab>
+                <Tooltip title="Create Todo" placement="right">
+                    <Fab
+                        aria-label="Create Todo"
+                        color="primary"
+                        size="small"
+                        sx={{
+                            zIndex: 0,
+                            flexShrink: 0,
+                            m: 1,
+                            boxShadow: 1,
+                            '&:active': {
+                                boxShadow: 0,
+                            }
+                        }}
+                        type="submit"
+                    >
+                        <Add />
+                    </Fab>
+                </Tooltip>
+
             </Box>
         </Box>
     )
