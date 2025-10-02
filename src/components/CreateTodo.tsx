@@ -48,7 +48,7 @@ export default function CreateTodo({ onCreateTodo }: CreateTodoProps) {
                     error={hasError}
                     sx={{ flexGrow: 1, m: 1 }}
                 />
-                <Tooltip title="Create Todo" placement="right">
+                <Tooltip title="Create Todo" placement="top">
                     <Fab
                         aria-label="Create Todo"
                         color="primary"

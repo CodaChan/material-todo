@@ -4,8 +4,9 @@ import CreateTodo from "./components/CreateTodo";
 import TodoList from "./components/TodoList";
 import TopBar from "./components/TopBar";
 import FaviconSwitcher from "./components/FaviconSwitcher";
-import type Todo from "./types";
+import type { Todo, SnackBarMsg } from "./types";
 import TodoFilter from "./components/TodoFilter";
+import SnackBar from "./components/SnackBar";
 
 export default function App() {
 
@@ -35,6 +36,9 @@ export default function App() {
         window.localStorage.setItem("hasFilter", JSON.stringify(hasFilter))
     }, [hasFilter])
 
+    // hasSnackBar
+    const [snackBarMsg, setSnackBarMsg] = useState<SnackBarMsg | null>(null)
+
     // filteredTodos
     const filteredTodos = useMemo(() => (
         hasFilter
@@ -45,10 +49,12 @@ export default function App() {
     // handles
     const handleCreateTodo = useCallback((text: string) => {
         setTodos((previous) => [...previous, { completed: false, content: text, id: Date.now() }])
+        setSnackBarMsg({id: Date.now(), content: "A todo Created."})
     }, [])
 
     const handleRemoveTodo = useCallback((id: number) => {
         setTodos((previous) => previous.filter((todo) => todo.id !== id))
+        setSnackBarMsg({id: Date.now(), content: "A todo Removed."})
     }, [])
 
     const handleToggleTodo = useCallback((id: number) => {
@@ -72,9 +78,10 @@ export default function App() {
             <TopBar />
             <Box sx={{ marginX: 'auto', maxWidth: { xs: '80%', sm: '60%' } }}>
                 <CreateTodo onCreateTodo={handleCreateTodo} />
-                <TodoFilter onToggleFilter={handleToggleFilter} hasFilter={hasFilter}/>
                 <TodoList onRemoveTodo={handleRemoveTodo} onToggleTodo={handleToggleTodo} todos={filteredTodos} />
             </Box>
+            <TodoFilter onToggleFilter={handleToggleFilter} hasFilter={hasFilter}/>
+            <SnackBar msg={snackBarMsg}/>
         </>
     )
 }

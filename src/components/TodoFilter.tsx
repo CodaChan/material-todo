@@ -15,9 +15,9 @@ export default function TodoFilter({ onToggleFilter, hasFilter }: TodoFilterProp
                 onClick={() => onToggleFilter(!hasFilter)}
                 sx={{
                     position: 'fixed',
-                    bottom: 36,
-                    left: { xs: '50%', sm: 36 },
-                    transform: { xs: 'translateX(-50%)', sm: 'none' }
+                    bottom: { xs: 72, sm: 24 },
+                    right: { xs: '50%', sm: 24 },
+                    transform: { xs: 'translateX(+50%)', sm: 'none' }
                 }}
             >
                 <FilterAlt sx={{ display: hasFilter ? 'none' : 'inline-block' }} />

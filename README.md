@@ -33,5 +33,5 @@ npm run dev
 - ~~github link~~
 - ~~filter~~
 - ~~hover label~~
-- success hint
+- ~~success hint~~
 - add comments
