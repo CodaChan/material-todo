@@ -24,6 +24,10 @@ export default function ThemeSwitcher() {
                         m: 0.5,
                         border: 0,
                         borderRadius: 1,
+                        color: 'white',
+                        '&.Mui-selected': {
+                            color: 'white'
+                        },
                         '&:not(:first-of-type)': {
                             marginLeft: 0
                         }
@@ -45,28 +49,30 @@ export default function ThemeSwitcher() {
                     my: 1
                 }}
             />
-            {/* <StyledToggleButtonGroup> */}
-                <ToggleButton
-                    onChange={() => {
-                        if (mode === 'system') {
-                            setMode(prevMode.current)
-                            prevMode.current = 'system'
-                        } else {
-                            prevMode.current = mode
-                            setMode('system')
-                        }
-                    }}
-                    selected={mode === 'system'}
-                    value="system"
-                    sx={{
-                        m: 0.5,
-                        border: 0,
-                        borderRadius: 1
-                    }}
-                >
-                    <AutoMode />
-                </ToggleButton>
-            {/* </StyledToggleButtonGroup> */}
+            <ToggleButton
+                onChange={() => {
+                    if (mode === 'system') {
+                        setMode(prevMode.current)
+                        prevMode.current = 'system'
+                    } else {
+                        prevMode.current = mode
+                        setMode('system')
+                    }
+                }}
+                selected={mode === 'system'}
+                value="system"
+                sx={{
+                    m: 0.5,
+                    border: 0,
+                    borderRadius: 1,
+                    color: 'white',
+                    '&.Mui-selected, &.Mui-selected:hover': {
+                        color: 'white'
+                    }
+                }}
+            >
+                <AutoMode />
+            </ToggleButton>
         </Box>
     );
 }

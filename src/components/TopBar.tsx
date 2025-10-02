@@ -38,7 +38,7 @@ export default function TopBar() {
                         rel="noopener noreferrer"
                         sx={{ ml: 1 }}
                     >
-                        <GitHub fontSize="large" />
+                        <GitHub fontSize="large" sx={{ color: 'white' }} />
                     </IconButton>
                 </Toolbar>
             </AppBar>

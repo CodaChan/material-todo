@@ -1,12 +1,15 @@
 import { Box } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import CreateTodo from "./components/CreateTodo";
 import TodoList from "./components/TodoList";
 import TopBar from "./components/TopBar";
 import FaviconSwitcher from "./components/FaviconSwitcher";
 import type Todo from "./types";
+import TodoFilter from "./components/TodoFilter";
 
 export default function App() {
+
+    // todos
     const [todos, setTodos] = useState<Todo[]>(() => {
         if (typeof window === "undefined") {
             return []
@@ -19,15 +22,36 @@ export default function App() {
         window.localStorage.setItem("todos", JSON.stringify(todos))
     }, [todos])
 
-    const handleCreateTodo = (text: string) => {
+    // hasFilter
+    const [hasFilter, setHasFilter] = useState<boolean>(() => {
+        if (typeof window === "undefined") {
+            return false
+        }
+        const stored = window.localStorage.getItem("hasFilter")
+        return stored ? JSON.parse(stored) as boolean : false
+    })
+
+    useEffect(() => {
+        window.localStorage.setItem("hasFilter", JSON.stringify(hasFilter))
+    }, [hasFilter])
+
+    // filteredTodos
+    const filteredTodos = useMemo(() => (
+        hasFilter
+            ? todos.filter((todo) => !todo.completed)
+            : todos
+    ), [todos, hasFilter])
+
+    // handles
+    const handleCreateTodo = useCallback((text: string) => {
         setTodos((previous) => [...previous, { completed: false, content: text, id: Date.now() }])
-    }
+    }, [])
 
-    const handleRemoveTodo = (id: number) => {
+    const handleRemoveTodo = useCallback((id: number) => {
         setTodos((previous) => previous.filter((todo) => todo.id !== id))
-    }
+    }, [])
 
-    const handleToggleTodo = (id: number) => {
+    const handleToggleTodo = useCallback((id: number) => {
         setTodos((previous) =>
             previous.map((todo) =>
                 todo.id === id
@@ -35,15 +59,21 @@ export default function App() {
                     : todo
             )
         )
-    }
+    }, [])
 
+    const handleToggleFilter = useCallback((status: boolean) => {
+        setHasFilter(status)
+    }, [])
+
+    // App body
     return (
         <>
             <FaviconSwitcher />
             <TopBar />
             <Box sx={{ marginX: 'auto', maxWidth: { xs: '80%', sm: '60%' } }}>
                 <CreateTodo onCreateTodo={handleCreateTodo} />
-                <TodoList onRemoveTodo={handleRemoveTodo} onToggleTodo={handleToggleTodo} todos={todos} />
+                <TodoFilter onToggleFilter={handleToggleFilter} hasFilter={hasFilter}/>
+                <TodoList onRemoveTodo={handleRemoveTodo} onToggleTodo={handleToggleTodo} todos={filteredTodos} />
             </Box>
         </>
     )

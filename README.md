@@ -18,17 +18,20 @@ npm run dev
 
 - Material Design 2
 - Responsive pages
-- Full support for dark mode
 - Local data cache
+- Full support for dark mode
 
-## TODO
+
+## Future
+- dragger @dnd-kit
+
+## Todo
 
 - ~~submit check~~
 - ~~code format~~
 - ~~local storage~~
 - ~~add github link~~
-- filter
-- dragger @dnd-kit
-- catch error
+- ~~filter~~
 - hover label
+- success hint
 - add comments
