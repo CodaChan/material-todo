@@ -49,12 +49,12 @@ export default function App() {
     // handles
     const handleCreateTodo = useCallback((text: string) => {
         setTodos((previous) => [...previous, { completed: false, content: text, id: Date.now() }])
-        setSnackBarMsg({id: Date.now(), content: "A todo Created."})
+        setSnackBarMsg({ id: Date.now(), content: "A todo Created." })
     }, [])
 
     const handleRemoveTodo = useCallback((id: number) => {
         setTodos((previous) => previous.filter((todo) => todo.id !== id))
-        setSnackBarMsg({id: Date.now(), content: "A todo Removed."})
+        setSnackBarMsg({ id: Date.now(), content: "A todo Removed." })
     }, [])
 
     const handleToggleTodo = useCallback((id: number) => {
@@ -80,8 +80,8 @@ export default function App() {
                 <CreateTodo onCreateTodo={handleCreateTodo} />
                 <TodoList onRemoveTodo={handleRemoveTodo} onToggleTodo={handleToggleTodo} todos={filteredTodos} />
             </Box>
-            <TodoFilter onToggleFilter={handleToggleFilter} hasFilter={hasFilter}/>
-            <SnackBar msg={snackBarMsg}/>
+            <TodoFilter onToggleFilter={handleToggleFilter} hasFilter={hasFilter} />
+            <SnackBar msg={snackBarMsg} />
         </>
     )
 }

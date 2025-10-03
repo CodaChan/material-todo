@@ -9,15 +9,15 @@ interface SnackBarProps {
 export default function SnackBar({ msg }: SnackBarProps) {
     const [open, setOpen] = useState(false)
     useEffect(() => {
-        if(!msg) return
+        if (!msg) return
         setOpen(true)
     }, [msg])
 
     return (
-        <Snackbar 
+        <Snackbar
             key={msg?.id}
-            open={open} 
-            autoHideDuration={3000} 
+            open={open}
+            autoHideDuration={3000}
             onClose={() => setOpen(false)}
         >
             <Alert

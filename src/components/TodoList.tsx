@@ -1,6 +1,6 @@
 import { Delete } from "@mui/icons-material"
 import { Checkbox, IconButton, List, ListItem, ListItemButton, ListItemText, Tooltip } from "@mui/material"
-import type Todo from "../types"
+import type { Todo } from "../types"
 
 interface TodoListProps {
     onRemoveTodo: (id: number) => void,
